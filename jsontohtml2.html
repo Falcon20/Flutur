@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>JSON to HTML</title>
+<script>
+function make_json(form){
+	var json={
+	"Title":form.title.value,
+	"Author_name":form.author.value,
+	"Blog_paragraph_1":form.bp1.value,
+	"Blog_paragraph_2":form.bp2.value,
+	"Blog_paragraph_3":form.bp3.value
+	};
+	var html=JSON.stringify(json,0,4);
+	document.getElementById('output').innerHTML=html;
+	return false;
+}
+var test = function () {
+  document.getElementById('image').src = document.getElementById('url').value;
+}
+
+var errorCallback = function () {
+  alert('Image did not exist');
+}
+
+var loadCallback = function () {
+  alert('Image existed');
+}
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<h2 align="center" style="color:white">Welcome to the blogging page</h2>
+<body background="image.jpg">
+<pre id="output">
+</pre>
+<form class="col-md-5 col-md-offset-4" onsubmit="return make_json(this)">
+	<div class="form-group">
+	<input type="text" class="form-control" name="title" placeholder="Insert the title of the blog" required>
+	</div>
+	<div class="form-group">
+	<input type="text" class="form-control" name="author" placeholder="Enter author's name" required>
+	</div>
+	
+	<div class="form-group">
+	<textarea class="form-control" rows="10" name ="bp1" placeholder="Blog paragraph 1" required></textarea>
+	
+	</div>
+	<div class="form-group">
+	<textarea class="form-control" rows="10" name="bp2" placeholder="Blog Paragraph 2" required></textarea>
+	</div>
+	<div class="form-group">
+	<textarea class="form-control" rows="10" name ="bp3" placeholder="Blog Paragraph 3" required></textarea>
+	</div>
+	<div class="form-group">
+ <input type="text"  class="form-control" id="url" name="url" placeholder ="Insert image URL"/>
+<img style="display: none" id="image" onerror="errorCallback()" onload="loadCallback()" />
+	
+	</div>
+	<div class="form-group">
+	<button class="btn btn-primary btn-block" onclick="test()">Test for image url</button>
+	</div>
+	<div class="form-group">
+	<input class="btn btn-success btn-block" type="submit">
+	</div>
+</form>
+</body>
+</html>
